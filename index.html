@@ -1,188 +1,476 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>NieLib</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <!-- Move to up button -->
-    <div class="scroll-button">
-      <a href="#home"><i class="fas fa-arrow-up"></i></a>
-    </div>
-    <!-- navgaition menu -->
-    <nav>
-      <div class="navbar">
-        <div class="logo"><a href="#">NieLib.</a></div>
-        <ul class="menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skill</a></li>
-          <li><a href="#services">Pelayanan aku</a></li>
-          <li><a href="#contact">Kontak</a></li>
-          <div class="cancel-btn">
-            <i class="fas fa-times"></i>
-          </div>
-        </ul>
-        <div class="media-icons">
-          <a href="#"><i class="fa fa-angle-double-right"></i></a>
-          <a href="https://github.com/MayoHotSauce"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/niell.jpeg/"><i class="fab fa-instagram"></i></a>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NieLib - UI/UX Designer & Frontend Developer</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts - Tambahan font yang lebih profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ganti font dengan kombinasi yang lebih elegan dan minimalist -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font utama -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tambahan style untuk background animasi -->
+    <style>
+        /* Background galaxy effect */
+        body {
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow-x: hidden;
+        }
+
+        /* Star twinkling effect */
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .star-1 { animation: twinkle 3s infinite; }
+        .star-2 { animation: twinkle 4s infinite 1s; }
+        .star-3 { animation: twinkle 5s infinite 2s; }
+
+        /* Custom font settings */
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .font-manrope {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        /* Gradient text dengan warna yang lebih subtle */
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #64B5F6 50%, #7E57C2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Section divider with nebula effect */
+        .nebula-divider {
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(138, 43, 226, 0.2) 25%, 
+                rgba(100, 181, 246, 0.8) 50%,
+                rgba(138, 43, 226, 0.2) 75%, 
+                transparent 100%);
+            margin: 4rem 0;
+            box-shadow: 0 0 15px rgba(100, 181, 246, 0.5);
+        }
+
+        /* Progress bar animation */
+        @keyframes fillProgress {
+            from { width: 0%; }
+            to { width: var(--progress); }
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            animation: fillProgress 1.5s ease-out forwards;
+            background: linear-gradient(90deg, #64B5F6, #7E57C2);
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+        }
+
+        /* Card hover effects */
+        .galaxy-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .galaxy-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 181, 246, 0.5);
+            box-shadow: 0 5px 15px rgba(100, 181, 246, 0.2);
+        }
+
+        /* Base font settings */
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        /* Heading styles */
+        h1, h2, h3, .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Gradient text untuk semua heading */
+        .gradient-heading {
+            background: linear-gradient(135deg, #fff 0%, #64B5F6 50%, #7E57C2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Animasi warna untuk NieLib */
+        @keyframes galaxyGlow {
+            0% { color: #64B5F6; }
+            50% { color: #7E57C2; }
+            100% { color: #64B5F6; }
+        }
+
+        /* Animasi gradient untuk nama */
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            animation: galaxyGlow 3s infinite;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            opacity: 0.9;
+        }
+
+        .hello-text {
+            font-size: 2rem;
+            color: #64B5F6;
+            font-weight: 600;
+        }
+
+        .name-gradient {
+            background: linear-gradient(-45deg, #fff, #64B5F6, #7E57C2, #3F51B5);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientFlow 6s ease infinite;
+        }
+    </style>
+</head>
+<body class="font-manrope text-gray-100 tracking-wide">
+    <!-- Star background -->
+    <div id="stars" class="fixed inset-0 z-0"></div>
+
+    <!-- Navbar dengan hover effect yang lebih keren -->
+    <nav class="fixed w-full bg-black/30 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="logo-text font-space">
+                        <i class="fas fa-galaxy logo-icon"></i>
+                        NieLib.
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 font-medium">
+                    <a href="#home" class="relative group text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                        <span>Home</span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#about" class="relative group text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                        <span>About</span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#skills" class="text-gray-300 hover:text-blue-400 transition-colors">Skills</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-blue-400 transition-colors">Portfolio</a>
+                    <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="menu-btn">
-        <i class="fas fa-bars"></i>
-      </div>
     </nav>
 
-    <!-- Home Section Start -->
-    <section class="home" id="home">
-      <div class="home-content">
-        <div class="text">
-          <div class="text-one">Hallo!</div>
-          <div class="text-two">Saya Niell</div>
-          <div class="text-three">UI/UX Designer </div>
-          <div class="text-four">Frontend Programmer
-          </div>
+    <!-- Hero Section dengan padding yang lebih baik -->
+    <section id="home" class="min-h-screen flex items-center relative z-10 px-4 py-20">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <p class="hello-text font-space">Halo! 👋</p>
+                    <h1 class="font-space text-6xl md:text-7xl font-bold name-gradient tracking-tight leading-tight">
+                        Saya<br/>Niell
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-400 font-light">
+                        UI/UX Designer & Frontend Developer
+                    </p>
+                    <div class="flex gap-4 pt-4">
+                        <a href="#" class="galaxy-card px-8 py-4 rounded-lg flex items-center gap-3 hover:bg-blue-500/10 font-medium">
+                            <i class="fas fa-download"></i>
+                            <span>Download CV</span>
+                        </a>
+                        <a href="#contact" class="galaxy-card px-8 py-4 rounded-lg flex items-center gap-3 hover:bg-purple-500/10 font-medium">
+                            <i class="fas fa-envelope"></i>
+                            <span>Hubungi Saya</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <img src="your-illustration.svg" alt="Developer Illustration" class="w-full">
+                </div>
+            </div>
         </div>
-        </div>
-      </div>
     </section>
 
-    <!-- About Section Start -->
-    <section class="about" id="about">
-      <div class="content">
-        <div class="title"><span>About Me</span></div>
-        <div class="about-details">
-          <div class="left">
-            <img src="https://i.pinimg.com/originals/26/a0/96/26a09634994b96e38d5bdafd16fa9b75.gif" alt="" />
-          </div>
-          <div class="right">
-            <div class="topic">  </div>
-            <p>Halo! Nama saya <strong>Aditya N</strong>. Saya adalah siswa di <strong>SMKN1 Ciamis</strong>, dengan jurusan <strong>Rekayasa Perangkat Lunak (RPL)</strong>, Saya Memiliki Minat Di Bidang Frontend.</p>
-            <h2> <strong>Keahlian: </strong></h2>
-            <ul>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Javascript</li>
-                    <li>Laravel</li>
-                </ul>
-            </ul>
-            <p>Saya juga memiliki pemahaman dasar di bidang <strong>Backend</strong>. Selain itu, saya senang belajar dan terus mengembangkan keterampilan saya dalam dunia pemrograman.</p>
-            <p>Jika Anda tertarik untuk berkolaborasi atau ingin tahu lebih lanjut tentang saya, jangan ragu untuk menghubungi saya!</p>  
-            <div class="button">
+    <!-- Nebula divider -->
+    <div class="nebula-divider"></div>
+
+    <!-- Skills Section dengan Progress Bar Animasi -->
+    <section id="skills" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-space text-3xl font-bold text-center gradient-heading mb-12">Skills & Technologies</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Frontend Skills -->
+                <div class="space-y-6">
+                    <h3 class="font-space text-xl font-semibold text-white mb-6">Frontend Development</h3>
+                    
+                    <!-- HTML -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-300">HTML</span>
+                            <span class="text-blue-400">90%</span>
+                        </div>
+                        <div class="h-2 bg-gray-700/50 rounded-full progress-bar">
+                            <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full progress-fill"
+                                 style="--progress: 90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- CSS -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-300">CSS/SCSS</span>
+                            <span class="text-blue-400">85%</span>
+                        </div>
+                        <div class="h-2 bg-gray-700/50 rounded-full progress-bar">
+                            <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full progress-fill"
+                                 style="--progress: 85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-300">JavaScript</span>
+                            <span class="text-blue-400">80%</span>
+                        </div>
+                        <div class="h-2 bg-gray-700/50 rounded-full progress-bar">
+                            <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full progress-fill"
+                                 style="--progress: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="space-y-6">
+                    <h3 class="font-space text-xl font-semibold text-white mb-6">Backend Development</h3>
+                    
+                    <!-- Node.js -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-300">Node.js</span>
+                            <span class="text-blue-400">75%</span>
+                        </div>
+                        <div class="h-2 bg-gray-700/50 rounded-full progress-bar">
+                            <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full progress-fill"
+                                 style="--progress: 75%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Python -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-300">Python</span>
+                            <span class="text-blue-400">70%</span>
+                        </div>
+                        <div class="h-2 bg-gray-700/50 rounded-full progress-bar">
+                            <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full progress-fill"
+                                 style="--progress: 70%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Tools & Technologies -->
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 
+                            transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/50">
+                    <div class="text-center">
+                        <i class="fab fa-react text-4xl text-blue-400 mb-2 group-hover:animate-spin"></i>
+                        <h4 class="text-white">React</h4>
+                    </div>
+                </div>
+                <!-- Add more tool cards with similar structure -->
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- My Skill Section Start -->
-    <!-- Section Tag and Other Div will same where we need to put same CSS -->
-    <section class="skills" id="skills">
-      <div class="content">
-        <div class="title"><span>My Web skill</span></div>
-        <div class="skills-details">
-          <div class="text">
-            <div class="topic">My Experience</div>
-            <p>My Experience In Total while in School</p>
-            <div class="experience">
-              <div class="num">2</div>
-              <div class="exp">
-                Years Of <br />
-                Experience
-              </div>
+    <!-- Portfolio Section yang lebih informatif -->
+    <section id="portfolio" class="py-20 bg-black/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-space text-3xl font-bold text-center gradient-heading mb-12">Portfolio</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden transition-all hover:-translate-y-2 hover:border-blue-400/50">
+                    <div class="relative">
+                        <img src="project1.jpg" alt="Project 1" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2">
+                            <span class="px-2 py-1 text-xs bg-blue-500/80 rounded-full">Web App</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">E-Commerce Dashboard</h3>
+                        <p class="text-gray-400 text-sm mb-4">Modern dashboard untuk manajemen toko online dengan fitur analitik real-time dan manajemen inventori</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">MongoDB</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="px-4 py-2 bg-blue-600/80 hover:bg-blue-700 rounded-lg text-sm transition-colors">Live Demo</a>
+                            <a href="#" class="px-4 py-2 border border-blue-400/30 hover:bg-blue-400/10 rounded-lg text-sm transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden transition-all hover:-translate-y-2 hover:border-blue-400/50">
+                    <div class="relative">
+                        <img src="project2.jpg" alt="Project 2" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2">
+                            <span class="px-2 py-1 text-xs bg-purple-500/80 rounded-full">Mobile App</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Fitness Tracker</h3>
+                        <p class="text-gray-400 text-sm mb-4">Aplikasi mobile untuk tracking aktivitas fitness dengan fitur social sharing dan progress monitoring</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">Flutter</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">Firebase</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">Google Fit API</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="px-4 py-2 bg-blue-600/80 hover:bg-blue-700 rounded-lg text-sm transition-colors">Play Store</a>
+                            <a href="#" class="px-4 py-2 border border-blue-400/30 hover:bg-blue-400/10 rounded-lg text-sm transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden transition-all hover:-translate-y-2 hover:border-blue-400/50">
+                    <!-- Similar structure with different content -->
+                </div>
             </div>
-          </div>
-          <div class="boxes">
-            <div class="box">
-              <div class="topic">HTML</div>
-              <div class="per">60-85%</div>
-            </div>
-            <div class="box">
-              <div class="topic">CSS</div>
-              <div class="per">80-85%</div>
-            </div>
-            <div class="box">
-              <div class="topic">JavScript</div>
-              <div class="per">40-60%</div>
-            </div>
-            <div class="box">
-              <div class="topic">PHP</div>
-              <div class="per">40-78%</div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- My Services Section Start -->
-    <section class="services" id="services">
-      <div class="content">
-        <div class="title"><span>My Extra Skill</span></div>
-        <div class="boxes">
-          <div class="box">
-            <div class="icon">
-              <i class="fas fa-desktop"></i>
+    <!-- Contact Section yang lebih relevan -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-space text-3xl font-bold text-center gradient-heading mb-12">Let's Connect</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Github -->
+                <a href="https://github.com/yourusername" target="_blank" 
+                   class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all hover:-translate-y-2 hover:border-blue-400/50">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                            <i class="fab fa-github text-2xl text-gray-300 group-hover:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Github</h3>
+                            <p class="text-gray-400 text-sm">Check my repositories</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/yourusername" target="_blank"
+                   class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all hover:-translate-y-2 hover:border-blue-400/50">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                            <i class="fab fa-linkedin-in text-2xl text-gray-300 group-hover:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">LinkedIn</h3>
+                            <p class="text-gray-400 text-sm">Let's connect professionally</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Discord -->
+                <a href="https://discordapp.com/users/yourid" target="_blank"
+                   class="group bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all hover:-translate-y-2 hover:border-blue-400/50">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                            <i class="fab fa-discord text-2xl text-gray-300 group-hover:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Discord</h3>
+                            <p class="text-gray-400 text-sm">Chat with me</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="topic">Internet Skills</div>
-            <p>Saya punya Pemahaman yang Bagus Didalam Internet dan Bisa Secara Cepat Memahami.</p>
-          </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fas fa-paint-brush"></i>
-            </div>
-            <div class="topic">Graphic Design</div>
-            <p> Saya Sedikit Bisa untuk Graphic Design tapi tidak sebagus yang Di Expect </p>
-          </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <div class="topic"> Marketing</div>
-            <p> Untuk Marketing Saya mempunyai Minus Untuk Jualan Public Karena Malu , tapi saya bisa mempromosikan dalam Social Media , DLL.</p>
-          </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fa fa-language"></i>
-            </div>
-            <div class="topic">Language/Bahasa</div>
-            <p>Saya memiliki pemahaman yang Bagus dalam Bahasa Inggris / English maupun Indonesia , saat ini saya sedang belajar Germany dan French</p>
-          </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fas fa-camera-retro"></i>
-            </div>
-            <div class="topic">Photography</div>
-            <p> Untuk Photography saya bisa mengambil foto dengan vibe Santai ( Handphone ) , tetapi untuk camera sony ,dll masih belum memahami semua.</p>
-          </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fas fa-tablet-alt"></i>
-            </div>
-            <div class="topic">Apps Devlopment</div>
-            <p> Masih sedang Belajar untuk Apps Development dan belum bisa memahami Code nya</p>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- Contact Me section Start -->
-    <section class="contact" id="contact">
-      <div class="content">
-        <div class="title"><span>Contact Me</span></div>
-        <div class="text">
-          <div class="topic">Email : adityanathaniel44@gmail.com </div>
-          <p> Instagram DM : @niell.jpeg</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
 
-    <script src="/crud/Js/JsPrf.js"></script>
-  </body>
+        // Generate random stars
+        function createStars() {
+            const stars = document.getElementById('stars');
+            for(let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = `star star-${Math.ceil(Math.random() * 3)}`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                stars.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
 </html>
